@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Model | Game 2 Signal</title>
+  <title>Predictor | Game 2 Signal</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -26,105 +26,71 @@
     </nav>
 
     <section class="page-title">
-      <p class="eyebrow">Future</p>
-      <h1>Prediction Model</h1>
+      <p class="eyebrow">Predictor</p>
+      <h1>Estimate Series Win Probability After Game 2</h1>
       <p>
-        A logistic regression model estimates whether the Game 2 winner will eventually win the series using only information
-        available after Game 2.
+        Enter a Game 2 scenario and the calculator will estimate the probability that the Game 2 winner wins the series.
       </p>
     </section>
   </header>
 
   <main>
-    <section class="section split">
-      <div class="section-heading compact">
-        <p class="eyebrow">Model Inputs</p>
-        <h2>What the model knows after Game 2</h2>
-        <p>
-          The model uses series state, Game 2 margin, Game 2 winner home/away status, and playoff round.
-          It avoids future information like final series result or series length.
-        </p>
-      </div>
+    <section class="section predictor-section">
+      <div class="predictor-card">
+        <form id="predictor-form" class="predictor-form">
+          <label>
+            Series state after Game 2
+            <select id="state">
+              <option value="">Select series state</option>
+              <option value="2-0">2-0</option>
+              <option value="1-1">1-1</option>
+            </select>
+          </label>
 
-      <div class="model-grid">
-        <article class="model-card">
-          <span>Historical Accuracy</span>
-          <strong>77.3%</strong>
-          <small>Test split from 2004–2025 data</small>
-        </article>
+          <label>
+            Game 2 winning margin
+            <input id="margin" type="number" min="1" max="60" placeholder="Enter margin" />
+          </label>
 
-        <article class="model-card">
-          <span>Historical AUC</span>
-          <strong>0.816</strong>
-          <small>Strong separation for sports data</small>
-        </article>
+          <label>
+            Game 2 winner location
+            <select id="location">
+              <option value="">Select location</option>
+              <option value="Home">Home</option>
+              <option value="Away">Away</option>
+            </select>
+          </label>
 
-        <article class="model-card">
-          <span>2026 Accuracy</span>
-          <strong>83.3%</strong>
-          <small>Out-of-sample completed 2026 series</small>
-        </article>
+          <label>
+            Playoff round
+            <select id="round">
+              <option value="">Select round</option>
+              <option value="First Round">First Round</option>
+              <option value="Conference Semifinals">Conference Semifinals</option>
+              <option value="Eastern Conference Finals">Eastern Conference Finals</option>
+              <option value="Western Conference Finals">Western Conference Finals</option>
+              <option value="Finals">Finals</option>
+            </select>
+          </label>
+        </form>
 
-        <article class="model-card">
-          <span>2026 AUC</span>
-          <strong>0.778</strong>
-          <small>Early validation on new playoff data</small>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <p class="eyebrow">Interpretation</p>
-        <h2>The strongest predictor was going up 2-0.</h2>
-        <p>
-          The logistic regression odds ratio for the 2-0 state was 4.86. In plain English: holding margin, home status,
-          and playoff round constant, teams that won Game 2 to go up 2-0 had nearly five times the odds of winning the series
-          compared with Game 2 winners who only tied the series 1-1.
-        </p>
-      </div>
-
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Effect</th>
-              <th>Interpretation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2-0 series state</td>
-              <td>Strong positive</td>
-              <td>Main predictor. It sharply increases the probability of winning the series.</td>
-            </tr>
-            <tr>
-              <td>Game 2 winner at home</td>
-              <td>Positive</td>
-              <td>Home Game 2 winners had higher odds of winning the series.</td>
-            </tr>
-            <tr>
-              <td>Game 2 margin</td>
-              <td>Slight positive</td>
-              <td>Each extra point in Game 2 margin slightly increases estimated odds.</td>
-            </tr>
-            <tr>
-              <td>Playoff round</td>
-              <td>Mixed</td>
-              <td>Later-round samples are smaller, so coefficients should be interpreted carefully.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="result-panel">
+          <span>Predicted probability</span>
+          <strong id="probability">--</strong>
+          <p id="prediction-text">Select all inputs to generate a prediction.</p>
+          <div class="probability-bar">
+            <div id="probability-fill"></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section highlight-section">
-      <p class="eyebrow">2026 Validation</p>
-      <h2>The model correctly predicted 10 of 12 completed 2026 series.</h2>
+      <p class="eyebrow">How to read it</p>
+      <h2>This is probability, not prophecy.</h2>
       <p>
-        The 2026 test was treated as future-style validation. Because only 12 completed series were available at the time,
-        the result should be seen as an early validation rather than a final performance estimate.
+        A 75% prediction means the model estimates that similar historical Game 2 situations ended with the Game 2 winner
+        winning the series about three out of four times. It is not a guarantee, because basketball enjoys chaos.
       </p>
     </section>
   </main>
@@ -134,5 +100,6 @@
   </footer>
 
   <script src="site.js"></script>
+  <script src="predictor.js"></script>
 </body>
 </html>
