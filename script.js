@@ -11,6 +11,38 @@ const model = {
   }
 };
 
+const stateInput = document.getElementById("state");
+const marginInput = document.getElementById("margin");
+const locationInput = document.getElementById("location");
+const roundInput = document.getElementById("round");
+
+const probabilityText = document.getElementById("probability");
+const predictionText = document.getElementById("prediction-text");
+const probabilityFill = document.getElementById("probability-fill");
+
+function resetPrediction() {
+  probabilityText.textContent = "--";
+  predictionText.textContent = "Select all inputs to generate a prediction.";
+  probabilityFill.style.width = "0%";
+}
+
+function inputsAreComplete() {
+  const state = stateInput.value;
+  const marginRaw = marginInput.value;
+  const margin = Number(marginRaw);
+  const location = locationInput.value;
+  const round = roundInput.value;
+
+  return (
+    state !== "" &&
+    marginRaw !== "" &&
+    !Number.isNaN(margin) &&
+    margin > 0 &&
+    location !== "" &&
+    round !== ""
+  );
+}
+
 function predictSeriesWinProbability({ afterGame2State, game2Margin, game2WinnerLocation, round }) {
   let score = model.intercept;
 
@@ -38,32 +70,32 @@ function predictSeriesWinProbability({ afterGame2State, game2Margin, game2Winner
 }
 
 function updatePrediction() {
-  const afterGame2State = document.getElementById("state").value;
-  const game2Margin = Number(document.getElementById("margin").value);
-  const game2WinnerLocation = document.getElementById("location").value;
-  const round = document.getElementById("round").value;
+  if (!inputsAreComplete()) {
+    resetPrediction();
+    return;
+  }
 
   const probability = predictSeriesWinProbability({
-    afterGame2State,
-    game2Margin,
-    game2WinnerLocation,
-    round
+    afterGame2State: stateInput.value,
+    game2Margin: Number(marginInput.value),
+    game2WinnerLocation: locationInput.value,
+    round: roundInput.value
   });
 
-  const pct = probability * 100;
-  document.getElementById("probability").textContent = `${pct.toFixed(2)}%`;
-  document.getElementById("probability-fill").style.width = `${Math.min(Math.max(pct, 0), 100)}%`;
+  const probabilityPercent = probability * 100;
 
-  const prediction = probability >= 0.5
-    ? "The model predicts the Game 2 winner is more likely to win the series."
-    : "The model predicts the Game 2 winner is more likely to lose the series.";
+  probabilityText.textContent = `${probabilityPercent.toFixed(2)}%`;
+  probabilityFill.style.width = `${probabilityPercent}%`;
 
-  document.getElementById("prediction-text").textContent = `${prediction} This is based on the 2004–2025 logistic regression model.`;
+  predictionText.textContent =
+    probability >= 0.5
+      ? "The model predicts that the Game 2 winner is more likely to win the series. This is based on the 2004–2025 logistic regression model."
+      : "The model predicts the Game 2 winner is more likely to lose the series. This is based on the 2004–2025 logistic regression model.";
 }
 
-["state", "margin", "location", "round"].forEach((id) => {
-  document.getElementById(id).addEventListener("input", updatePrediction);
-  document.getElementById(id).addEventListener("change", updatePrediction);
+[stateInput, marginInput, locationInput, roundInput].forEach((input) => {
+  input.addEventListener("input", updatePrediction);
+  input.addEventListener("change", updatePrediction);
 });
 
-updatePrediction();
+resetPrediction();
