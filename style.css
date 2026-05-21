@@ -26,9 +26,7 @@ a {
   text-decoration: none;
 }
 
-/* =========================
-   Animated NBA-style header
-   ========================= */
+/* Animated NBA-style header */
 
 .hero,
 .page-header {
@@ -178,9 +176,7 @@ a {
   100% { background-position: 72px 72px, 72px 72px, center, center; }
 }
 
-/* =========================
-   Navigation
-   ========================= */
+/* Navigation */
 
 .page-header {
   padding-bottom: 54px;
@@ -222,9 +218,7 @@ a {
   font-size: 1.1rem;
 }
 
-/* =========================
-   Hero / Page title
-   ========================= */
+/* Hero / Page title */
 
 .hero-content {
   max-width: 1200px;
@@ -326,9 +320,7 @@ h1 {
   line-height: 1.65;
 }
 
-/* =========================
-   Layout and Cards
-   ========================= */
+/* Layout and Cards */
 
 main {
   max-width: 1200px;
@@ -413,9 +405,7 @@ main {
   line-height: 1.7;
 }
 
-/* =========================
-   Home Feature Cards
-   ========================= */
+/* Home Feature Cards */
 
 .feature-grid {
   display: grid;
@@ -451,9 +441,7 @@ main {
   margin: 0;
 }
 
-/* =========================
-   Dashboard PDF Cards
-   ========================= */
+/* Dashboard PDF Cards */
 
 .dashboard-links {
   display: grid;
@@ -500,9 +488,7 @@ main {
   line-height: 1.5;
 }
 
-/* =========================
-   Model / Predictor / Tables
-   ========================= */
+/* Model / Predictor / Tables */
 
 .split {
   display: grid;
@@ -657,9 +643,7 @@ footer {
   color: var(--muted);
 }
 
-/* =========================
-   Responsive
-   ========================= */
+/* Responsive */
 
 @media (max-width: 1100px) {
   .dashboard-links,
