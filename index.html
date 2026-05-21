@@ -162,6 +162,7 @@
           <label>
             Series state after Game 2
             <select id="state">
+              <option value="">Select series state</option>
               <option value="2-0">2-0</option>
               <option value="1-1">1-1</option>
             </select>
@@ -169,12 +170,13 @@
 
           <label>
             Game 2 winning margin
-            <input id="margin" type="number" min="1" max="60" value="9" />
+            <input id="margin" type="number" min="1" max="60" placeholder="Enter margin" />
           </label>
 
           <label>
             Game 2 winner location
             <select id="location">
+              <option value="">Select location</option>
               <option value="Home">Home</option>
               <option value="Away">Away</option>
             </select>
@@ -183,10 +185,11 @@
           <label>
             Playoff round
             <select id="round">
+              <option value="">Select round</option>
               <option value="First Round">First Round</option>
               <option value="Conference Semifinals">Conference Semifinals</option>
               <option value="Eastern Conference Finals">Eastern Conference Finals</option>
-              <option value="Western Conference Finals" selected>Western Conference Finals</option>
+              <option value="Western Conference Finals">Western Conference Finals</option>
               <option value="Finals">Finals</option>
             </select>
           </label>
@@ -195,7 +198,7 @@
         <div class="result-panel">
           <span>Predicted probability</span>
           <strong id="probability">--</strong>
-          <p id="prediction-text">Choose a scenario to generate a prediction.</p>
+          <p id="prediction-text">Select all inputs to generate a prediction.</p>
           <div class="probability-bar">
             <div id="probability-fill"></div>
           </div>
