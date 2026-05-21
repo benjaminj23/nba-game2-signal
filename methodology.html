@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methodology | Game 2 Signal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body><header class="page-header"><nav class="nav">
+  <a class="brand" href="index.html">Game 2 Signal</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="model.html">Model</a>
+    <a href="predictor.html">Predictor</a>
+    <a href="methodology.html">Methodology</a>
+  </div>
+</nav><section class="page-title"><p class="eyebrow">Methodology</p><h1>Dataset, Modelling Approach, and Limitations</h1><p>This page explains how the project was structured and why the model uses only post-Game 2 information.</p></section></header>
+<main>
+<section class="section split"><div class="section-heading compact"><p class="eyebrow">Dataset</p><h2>330 completed best-of-seven playoff series.</h2><p>The dataset covers NBA playoff series from 2004 to 2025. Each row represents one series and captures the Game 1 winner, Game 2 winner, final series winner, series state after Game 2, Game 2 margin, home/away status, and playoff round.</p></div>
+<div class="model-grid"><article class="model-card"><span>Period</span><strong>2004–2025</strong><small>All rounds were best-of-seven</small></article><article class="model-card"><span>Rows</span><strong>330</strong><small>One row per playoff series</small></article><article class="model-card"><span>Target</span><strong>0 / 1</strong><small>Whether Game 2 winner won the series</small></article><article class="model-card"><span>Validation</span><strong>2026</strong><small>Completed series used as out-of-sample test</small></article></div></section>
+<section class="section"><div class="section-heading"><p class="eyebrow">Feature Design</p><h2>Only information known after Game 2 was used.</h2><p>This avoids data leakage. The model does not use final series result, series length, or other future information.</p></div>
+<div class="table-wrapper"><table><thead><tr><th>Variable</th><th>Used?</th><th>Reason</th></tr></thead><tbody><tr><td>after_game2_state</td><td>Yes</td><td>Captures whether the Game 2 winner led 2-0 or tied the series 1-1.</td></tr><tr><td>game2_margin</td><td>Yes</td><td>Measures strength of the Game 2 win.</td></tr><tr><td>game2_winner_home</td><td>Yes</td><td>Captures whether the Game 2 winner played at home or away.</td></tr><tr><td>round</td><td>Yes</td><td>Allows prediction to vary by playoff stage.</td></tr><tr><td>series_result</td><td>No</td><td>Future outcome. Using it would leak the answer.</td></tr><tr><td>series_length</td><td>No</td><td>Known only after the series ends, so it is not valid for prediction after Game 2.</td></tr></tbody></table></div></section>
+<section class="section limitations"><p class="eyebrow">Limitations</p><h2>What this model does not know</h2><p>This analysis shows association, not causation. The model does not fully control for injuries, player availability, team strength, roster changes, coaching adjustments, matchup-specific factors, or betting markets. Later-round samples are smaller, and the 2026 validation sample is based only on completed series available at the time of testing.</p></section>
+<section class="section highlight-section"><p class="eyebrow">Future Work</p><h2>The next upgrade is team-strength data.</h2><p>A stronger model could add seed difference, regular-season win difference, Elo rating, net rating, injury indicators, or betting market probabilities. Those variables would help separate the Game 2 effect from team quality.</p></section>
+</main><footer>
+  <p>Built as a sports analytics portfolio project using NBA playoff data, Power BI, Python, and JavaScript.</p>
+</footer><script src="site.js"></script></body></html>

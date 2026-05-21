@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model | Game 2 Signal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body><header class="page-header"><nav class="nav">
+  <a class="brand" href="index.html">Game 2 Signal</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="model.html">Model</a>
+    <a href="predictor.html">Predictor</a>
+    <a href="methodology.html">Methodology</a>
+  </div>
+</nav><section class="page-title"><p class="eyebrow">Future</p><h1>Prediction Model</h1><p>A logistic regression model estimates whether the Game 2 winner will eventually win the series using only information available after Game 2.</p></section></header>
+<main>
+<section class="section split"><div class="section-heading compact"><p class="eyebrow">Model Inputs</p><h2>What the model knows after Game 2</h2><p>The model uses series state, Game 2 margin, Game 2 winner home/away status, and playoff round. It avoids future information like final series result or series length.</p></div>
+<div class="model-grid"><article class="model-card"><span>Historical Accuracy</span><strong>77.3%</strong><small>Test split from 2004–2025 data</small></article><article class="model-card"><span>Historical AUC</span><strong>0.816</strong><small>Strong separation for sports data</small></article><article class="model-card"><span>2026 Accuracy</span><strong>83.3%</strong><small>Out-of-sample completed 2026 series</small></article><article class="model-card"><span>2026 AUC</span><strong>0.778</strong><small>Early validation on new playoff data</small></article></div></section>
+<section class="section"><div class="section-heading"><p class="eyebrow">Interpretation</p><h2>The strongest predictor was going up 2-0.</h2><p>The logistic regression odds ratio for the 2-0 state was 4.86. Holding margin, home status, and playoff round constant, teams that won Game 2 to go up 2-0 had nearly five times the odds of winning the series compared with Game 2 winners who only tied the series 1-1.</p></div>
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Effect</th><th>Interpretation</th></tr></thead><tbody><tr><td>2-0 series state</td><td>Strong positive</td><td>Main predictor. It sharply increases the probability of winning the series.</td></tr><tr><td>Game 2 winner at home</td><td>Positive</td><td>Home Game 2 winners had higher odds of winning the series.</td></tr><tr><td>Game 2 margin</td><td>Slight positive</td><td>Each extra point in Game 2 margin slightly increases estimated odds.</td></tr><tr><td>Playoff round</td><td>Mixed</td><td>Later-round samples are smaller, so coefficients should be interpreted carefully.</td></tr></tbody></table></div></section>
+<section class="section highlight-section"><p class="eyebrow">2026 Validation</p><h2>The model correctly predicted 10 of 12 completed 2026 series.</h2><p>The 2026 test was treated as future-style validation. Because only 12 completed series were available at the time, the result should be seen as an early validation rather than a final performance estimate.</p></section>
+</main><footer>
+  <p>Built as a sports analytics portfolio project using NBA playoff data, Power BI, Python, and JavaScript.</p>
+</footer><script src="site.js"></script></body></html>

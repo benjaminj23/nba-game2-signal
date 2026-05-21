@@ -1,270 +1,70 @@
 <!DOCTYPE html>
-<html lang="en"> 
-<head> 
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Game 2 Signal | NBA Playoff Predictor</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <header class="hero">
     <nav class="nav">
-      <div class="brand">Game 2 Signal</div>
-      <div class="nav-links">
-        <a href="#dashboard">Dashboard</a>
-        <a href="#model">Model</a>
-        <a href="#predictor">Predictor</a>
-        <a href="#limitations">Limitations</a>
-      </div>
-    </nav>
-
+  <a class="brand" href="index.html">Game 2 Signal</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="model.html">Model</a>
+    <a href="predictor.html">Predictor</a>
+    <a href="methodology.html">Methodology</a>
+  </div>
+</nav>
     <section class="hero-content">
       <div>
         <p class="eyebrow">NBA Playoff Analytics</p>
         <h1>Does Winning Game 2 Predict the Series Winner?</h1>
-        <p class="subtitle">
-          A 2004–2025 NBA playoff dashboard and logistic regression model tested on completed 2026 playoff series.
-        </p>
+        <p class="subtitle">A 2004–2025 NBA playoff dashboard and logistic regression model tested on completed 2026 playoff series.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#predictor">Try the Predictor</a>
-          <a class="button secondary" href="#dashboard">View Dashboard</a>
+          <a class="button primary" href="predictor.html">Try the Predictor</a>
+          <a class="button secondary" href="dashboard.html">View Dashboard</a>
         </div>
       </div>
-
       <div class="hero-card">
         <p class="card-label">Main finding</p>
         <h2>2-0 leads change everything.</h2>
-        <p>
-          Game 2 winners won 73.94% of series overall, but the strongest signal came when Game 2 created a 2-0 lead.
-        </p>
+        <p>Game 2 winners won 73.94% of series overall, but the strongest signal came when Game 2 created a 2-0 lead.</p>
       </div>
     </section>
   </header>
-
   <main>
     <section class="metrics-section">
-      <article class="metric-card">
-        <span>Total Series</span>
-        <strong>330</strong>
-        <small>Best-of-seven series, 2004–2025</small>
-      </article>
-
-      <article class="metric-card">
-        <span>Game 2 Winner Win Rate</span>
-        <strong>73.94%</strong>
-        <small>244 wins out of 330 series</small>
-      </article>
-
-      <article class="metric-card">
-        <span>2-0 Series State</span>
-        <strong>89.12%</strong>
-        <small>Win rate after Game 2 winner led 2-0</small>
-      </article>
-
-      <article class="metric-card">
-        <span>2026 Test Accuracy</span>
-        <strong>83.3%</strong>
-        <small>10 correct predictions out of 12</small>
-      </article>
+      <article class="metric-card"><span>Total Series</span><strong>330</strong><small>Best-of-seven series, 2004–2025</small></article>
+      <article class="metric-card"><span>Game 2 Winner Win Rate</span><strong>73.94%</strong><small>244 wins out of 330 series</small></article>
+      <article class="metric-card"><span>2-0 Series State</span><strong>89.12%</strong><small>Win rate after Game 2 winner led 2-0</small></article>
+      <article class="metric-card"><span>2026 Test Accuracy</span><strong>83.3%</strong><small>10 correct predictions out of 12</small></article>
     </section>
-
-    <section id="dashboard" class="section">
+    <section class="section">
       <div class="section-heading">
-        <p class="eyebrow">Present</p>
-        <h2>Power BI Dashboard Views</h2>
-        <p>
-          Live Power BI embedding requires a paid sharing license, so the dashboard is provided through exported PDF views.
-          These views show the overall analysis and key filtered perspectives from the Power BI report.
-        </p>
+        <p class="eyebrow">Project Overview</p>
+        <h2>Past trends, present dashboard, future prediction.</h2>
+        <p>This project studies whether Game 2 winners go on to win NBA playoff series. It combines a Power BI dashboard, a logistic regression model, and a browser-based prediction calculator.</p>
       </div>
-
-      <div class="dashboard-links">
-        <a class="dashboard-link-card" href="dashboard_overall.pdf" target="_blank">
-          <span>Overall Dashboard</span>
-          <strong>330 series | 73.94% win rate</strong>
-          <small>Full 2004–2025 dashboard view.</small>
-        </a>
-
-        <a class="dashboard-link-card" href="dashboard_2_0.pdf" target="_blank">
-          <span>2-0 Series View</span>
-          <strong>193 series | 89.12% win rate</strong>
-          <small>Game 2 winner also won Game 1.</small>
-        </a>
-
-        <a class="dashboard-link-card" href="dashboard_1_1.pdf" target="_blank">
-          <span>1-1 Series View</span>
-          <strong>137 series | 52.55% win rate</strong>
-          <small>Game 2 winner tied the series after losing Game 1.</small>
-        </a>
-
-        <a class="dashboard-link-card" href="dashboard_home.pdf" target="_blank">
-          <span>Home Game 2 Winner View</span>
-          <strong>246 series | 81.30% win rate</strong>
-          <small>Game 2 winner played at home.</small>
-        </a>
-
-        <a class="dashboard-link-card" href="dashboard_away.pdf" target="_blank">
-          <span>Away Game 2 Winner View</span>
-          <strong>84 series | 52.38% win rate</strong>
-          <small>Game 2 winner played away.</small>
-        </a>
+      <div class="feature-grid">
+        <a class="feature-card" href="dashboard.html"><span>01</span><h3>Dashboard Views</h3><p>Explore exported Power BI views for overall, 2-0, 1-1, home, and away scenarios.</p></a>
+        <a class="feature-card" href="model.html"><span>02</span><h3>Model Results</h3><p>Review logistic regression accuracy, AUC, and coefficient interpretation.</p></a>
+        <a class="feature-card" href="predictor.html"><span>03</span><h3>Prediction Calculator</h3><p>Estimate the probability that a Game 2 winner wins the series.</p></a>
+        <a class="feature-card" href="methodology.html"><span>04</span><h3>Methodology</h3><p>See dataset scope, feature choices, limitations, and future improvements.</p></a>
       </div>
     </section>
-
-    <section id="model" class="section split">
-      <div class="section-heading compact">
-        <p class="eyebrow">Future</p>
-        <h2>Prediction Model</h2>
-        <p>
-          The logistic regression model predicts whether the Game 2 winner will win the series using only information known after Game 2.
-        </p>
-      </div>
-
-      <div class="model-grid">
-        <article class="model-card">
-          <span>Historical Accuracy</span>
-          <strong>77.3%</strong>
-          <small>Test split from 2004–2025 training data</small>
-        </article>
-
-        <article class="model-card">
-          <span>Historical AUC</span>
-          <strong>0.816</strong>
-          <small>Strong separation for sports data</small>
-        </article>
-
-        <article class="model-card">
-          <span>2026 Accuracy</span>
-          <strong>83.3%</strong>
-          <small>Out-of-sample completed 2026 series</small>
-        </article>
-
-        <article class="model-card">
-          <span>2026 AUC</span>
-          <strong>0.778</strong>
-          <small>Early validation on new playoff data</small>
-        </article>
-      </div>
-    </section>
-
-    <section id="predictor" class="section predictor-section">
-      <div class="section-heading">
-        <p class="eyebrow">Predictor</p>
-        <h2>Estimate Series Win Probability After Game 2</h2>
-        <p>
-          Select the Game 2 situation and the calculator will estimate the probability that the Game 2 winner wins the series.
-        </p>
-      </div>
-
-      <div class="predictor-card">
-        <form id="predictor-form" class="predictor-form">
-          <label>
-            Series state after Game 2
-            <select id="state">
-              <option value="">Select series state</option>
-              <option value="2-0">2-0</option>
-              <option value="1-1">1-1</option>
-            </select>
-          </label>
-
-          <label>
-            Game 2 winning margin
-            <input id="margin" type="number" min="1" max="60" placeholder="Enter margin" />
-          </label>
-
-          <label>
-            Game 2 winner location
-            <select id="location">
-              <option value="">Select location</option>
-              <option value="Home">Home</option>
-              <option value="Away">Away</option>
-            </select>
-          </label>
-
-          <label>
-            Playoff round
-            <select id="round">
-              <option value="">Select round</option>
-              <option value="First Round">First Round</option>
-              <option value="Conference Semifinals">Conference Semifinals</option>
-              <option value="Eastern Conference Finals">Eastern Conference Finals</option>
-              <option value="Western Conference Finals">Western Conference Finals</option>
-              <option value="Finals">Finals</option>
-            </select>
-          </label>
-        </form>
-
-        <div class="result-panel">
-          <span>Predicted probability</span>
-          <strong id="probability">--</strong>
-          <p id="prediction-text">Select all inputs to generate a prediction.</p>
-          <div class="probability-bar">
-            <div id="probability-fill"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section table-section">
-      <div class="section-heading compact">
-        <p class="eyebrow">2026 Validation</p>
-        <h2>Out-of-Sample Test Summary</h2>
-        <p>
-          The model trained on 2004–2025 data correctly predicted 10 of 12 completed 2026 playoff series.
-        </p>
-      </div>
-
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Metric</th>
-              <th>Value</th>
-              <th>Meaning</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Accuracy</td>
-              <td>83.3%</td>
-              <td>Correctly predicted 10 out of 12 series.</td>
-            </tr>
-            <tr>
-              <td>AUC</td>
-              <td>0.778</td>
-              <td>Decent ability to separate likely winners from losers.</td>
-            </tr>
-            <tr>
-              <td>Training period</td>
-              <td>2004–2025</td>
-              <td>Historical completed best-of-seven NBA playoff series.</td>
-            </tr>
-            <tr>
-              <td>Test period</td>
-              <td>2026 completed series</td>
-              <td>Used as unseen future-style validation data.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="limitations" class="section limitations">
-      <p class="eyebrow">Limitations</p>
-      <h2>What this model does not know</h2>
-      <p>
-        This analysis shows association, not causation. The model does not fully control for injuries, player availability,
-        team strength, roster changes, coaching adjustments, or matchup-specific factors. Later-round samples are smaller,
-        and 2026 validation is based only on completed series available at the time of testing.
-      </p>
+    <section class="section highlight-section">
+      <p class="eyebrow">Core Insight</p>
+      <h2>Winning Game 2 matters, but why it matters depends on the series state.</h2>
+      <p>The overall Game 2 winner win rate was 73.94%. However, when the Game 2 winner also won Game 1 and took a 2-0 lead, the series win rate rose to 89.12%. When the Game 2 winner only tied the series 1-1, the win rate was 52.55%.</p>
     </section>
   </main>
-
   <footer>
-    <p>Built as a sports analytics portfolio project using NBA playoff data, Power BI, Python, and JavaScript.</p>
-  </footer>
-
-  <script src="script.js"></script>
+  <p>Built as a sports analytics portfolio project using NBA playoff data, Power BI, Python, and JavaScript.</p>
+</footer>
+  <script src="site.js"></script>
 </body>
 </html>

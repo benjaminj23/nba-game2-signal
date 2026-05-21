@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predictor | Game 2 Signal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body><header class="page-header"><nav class="nav">
+  <a class="brand" href="index.html">Game 2 Signal</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="model.html">Model</a>
+    <a href="predictor.html">Predictor</a>
+    <a href="methodology.html">Methodology</a>
+  </div>
+</nav><section class="page-title"><p class="eyebrow">Predictor</p><h1>Estimate Series Win Probability After Game 2</h1><p>Enter a Game 2 scenario and the calculator will estimate the probability that the Game 2 winner wins the series.</p></section></header>
+<main><section class="section predictor-section"><div class="predictor-card"><form id="predictor-form" class="predictor-form">
+<label>Series state after Game 2<select id="state"><option value="">Select series state</option><option value="2-0">2-0</option><option value="1-1">1-1</option></select></label>
+<label>Game 2 winning margin<input id="margin" type="number" min="1" max="60" placeholder="Enter margin" /></label>
+<label>Game 2 winner location<select id="location"><option value="">Select location</option><option value="Home">Home</option><option value="Away">Away</option></select></label>
+<label>Playoff round<select id="round"><option value="">Select round</option><option value="First Round">First Round</option><option value="Conference Semifinals">Conference Semifinals</option><option value="Eastern Conference Finals">Eastern Conference Finals</option><option value="Western Conference Finals">Western Conference Finals</option><option value="Finals">Finals</option></select></label>
+</form><div class="result-panel"><span>Predicted probability</span><strong id="probability">--</strong><p id="prediction-text">Select all inputs to generate a prediction.</p><div class="probability-bar"><div id="probability-fill"></div></div></div></div></section>
+<section class="section highlight-section"><p class="eyebrow">How to read it</p><h2>This is probability, not prophecy.</h2><p>A 75% prediction means the model estimates that similar historical Game 2 situations ended with the Game 2 winner winning the series about three out of four times. It is not a guarantee, because basketball enjoys chaos.</p></section>
+</main><footer>
+  <p>Built as a sports analytics portfolio project using NBA playoff data, Power BI, Python, and JavaScript.</p>
+</footer><script src="site.js"></script><script src="predictor.js"></script></body></html>
