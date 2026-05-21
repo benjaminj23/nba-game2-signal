@@ -160,8 +160,7 @@ main {
 .model-card,
 .predictor-card,
 .table-wrapper,
-.limitations,
-.dashboard-frame {
+.limitations {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -223,7 +222,6 @@ code {
   border-radius: 8px;
 }
 
-/* Dashboard PDF link cards */
 .dashboard-links {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -237,7 +235,6 @@ code {
   gap: 0.65rem;
   padding: 1.25rem;
   border-radius: 20px;
-  text-decoration: none;
   color: var(--ink);
   background: var(--card);
   border: 1px solid var(--line);
@@ -268,39 +265,6 @@ code {
 .dashboard-link-card small {
   color: var(--muted);
   line-height: 1.5;
-}
-
-.dashboard-frame {
-  min-height: 680px;
-  position: relative;
-  overflow: hidden;
-}
-
-.dashboard-frame iframe {
-  width: 100%;
-  height: 680px;
-  border: 0;
-  display: block;
-}
-
-.iframe-placeholder {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  padding: 28px;
-  background: linear-gradient(135deg, #f8fafc, #dbeafe);
-}
-
-.iframe-placeholder h3 {
-  font-size: 2rem;
-  letter-spacing: -0.04em;
-  margin-bottom: 6px;
-}
-
-.iframe-placeholder p {
-  color: var(--muted);
 }
 
 .split {
